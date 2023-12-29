@@ -10,7 +10,7 @@
         <version>7</version>
     </parent>
 
-    <groupId>org.example</groupId>
+    <groupId>io.github.Lu-Zhi-Bin</groupId>
     <artifactId>bin-page-pom</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
@@ -19,6 +19,7 @@
         <module>bin-page-starter</module>
         <module>bin-page-plugin</module>
     </modules>
+
 
 
     <properties>
@@ -35,14 +36,40 @@
         <basic.version>1.2.9</basic.version>
         <servlet.version>2.5</servlet.version>
         <base.version>1.0.0</base.version>
+        <projectUrl>https://github.com/Lu-Zhi-Bin/Paging-Plugin.git</projectUrl>
+        <serverId>ossrh</serverId>
     </properties>
+
+    <url>${projectUrl}</url>
 
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
             <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo,manual</distribution>
         </license>
     </licenses>
+
+    <scm>
+        <connection>${projectUrl}</connection>
+        <developerConnection>${projectUrl}</developerConnection>
+        <url>${projectUrl}</url>
+    </scm>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <!--这个id和settings.xml中servers.server.id要相同，因为上传jar需要登录才有权限-->
+            <id>${serverId}</id>
+            <name>OSS Snapshots Repository</name>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+        </snapshotRepository>
+        <repository>
+            <!--这个id和settings.xml中servers.server.id要相同，因为上传jar需要登录才有权限-->
+            <id>${serverId}</id>
+            <name>OSS Staging Repository</name>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
     <developers>
         <developer>
